@@ -6,7 +6,7 @@ permalink: /python-numpy-tutorial/
 
 <div>
   <a href="https://colab.research.google.com/github/cs231n/cs231n.github.io/blob/master/python-colab.ipynb" target="_blank">
-    <img class="colab-badge" src="/assets/badges/colab-open.svg" alt="Colab Notebook"/>
+    <img class="colab-badge" src="/assets/colab-open.svg" alt="Colab Notebook"/>
   </a>
 </div>
 
@@ -77,7 +77,7 @@ and benefits from free access to hardware accelerators like GPUs and TPUs (with 
 **Run Tutorial in Jupyter Notebook**. If you wish to run the notebook locally with Jupyter, make sure your virtual environment is installed correctly (as per the [setup instructions]({{site.baseurl}}/setup-instructions/)), activate it, then run `pip install notebook` to install Jupyter notebook. Next, [open the notebook](https://raw.githubusercontent.com/cs231n/cs231n.github.io/master/jupyter-notebook-tutorial.ipynb) and download it to a directory of your choice by right-clicking on the page and selecting `Save Page As`. Then `cd` to that directory and run `jupyter notebook`.
 
 <div class='fig figcenter'>
-  <img src='/assets/ipython-tutorial/file-browser.png'>
+  <img src='/assets/file-browser.png'>
 </div>
 
 This should automatically launch a notebook server at `http://localhost:8888`.
