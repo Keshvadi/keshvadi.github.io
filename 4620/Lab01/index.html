@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Exercise 1: Setting Up and Exploring the SDK</title>
+  <script src="scripts/clipboard.min.js"></script>
+  <script src="scripts/copybutton.js"></script>
+
+<style>
+    html, body, footer {
+        font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+        margin: 1em;
+    }
+
+    img:not(.clipboard){
+        max-width: 100%;
+        height: auto;
+        width: auto;
+    }
+
+    /* Copy buttons */
+    button.copybtn {
+        webkit-transition: opacity .3s ease-in-out;
+        -o-transition: opacity .3s ease-in-out;
+        transition: opacity .3s ease-in-out;
+        opacity: 0;
+        padding: 2px 6px;
+        position: absolute;
+        right: 4px;
+        top: 4px;
+    }
+    div.sourceCode:hover .copybtn, div.sourceCode .copybtn:focus {
+        opacity: .3;
+    }
+    div.sourceCode .copybtn:hover {
+        opacity: 1;
+    }
+    div.sourceCode {
+        position: relative;
+    }
+    .xmodule_display.xmodule_HtmlBlock ol {
+        padding: 0 0 0 2em !important;
+    }
+    .xmodule_display.xmodule_HtmlBlock ul {
+        padding: 0 0 0 2em !important;
+    }
+
+    code {
+        padding: 2px 4px !important;
+        background-color: #eee !important;
+        border-radius: 4px;
+    }
+    pre code {
+        padding: 9.5px !important;
+        background-color: #f5f5f5 !important;
+        display: block;
+        overflow-x: auto;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        word-break: break-all;
+        word-wrap: break-word;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        white-space: pre;
+    }
+    pre code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    pre code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    pre code span.at { color: #7d9029; } /* Attribute */
+    pre code span.bn { color: #40a070; } /* BaseN */
+    pre code span.bu { color: #06287e; } /* BuiltIn */
+    pre code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    pre code span.ch { color: #4070a0; } /* Char */
+    pre code span.cn { color: #880000; } /* Constant */
+    pre code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    pre code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    pre code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    pre code span.dt { color: #902000; } /* DataType */
+    pre code span.dv { color: #40a070; } /* DecVal */
+    pre code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    pre code span.ex { color: #06287e; } /* Extension */
+    pre code span.fl { color: #40a070; } /* Float */
+    pre code span.fu { color: #06287e; } /* Function */
+    pre code span.im { } /* Import */
+    pre code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    pre code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    pre code span.op { color: #666666; } /* Operator */
+    pre code span.ot { color: #007020; } /* Other */
+    pre code span.pp { color: #bc7a00; } /* Preprocessor */
+    pre code span.sc { color: #4070a0; } /* SpecialChar */
+    pre code span.ss { color: #bb6688; } /* SpecialString */
+    pre code span.st { color: #4070a0; } /* String */
+    pre code span.va { color: #19177c; } /* Variable */
+    pre code span.vs { color: #4070a0; } /* VerbatimString */
+    pre code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+    footer {
+        padding-top: 3em;
+        font-style: italic;
+        font-size: .9em;
+    }
+</style>
+<body>
+<p><em>SENG 4260 - Lab 01</em></p>
+<div style="background-color: #FFD2D2; padding: 15px; margin-bottom: 25px">
+<h3>
+<span class="fa fa-info-circle"></span> Note
+</h3>
+<p>The exercises in this series of lectures will have an associated charge in your AWS account. In this exercise, you create the following resources:</p>
+<ul>
+<li>AWS Identity and Access Management (IAM) policy and user (Policies and users are AWS account features, offered at no additional charge)</li>
+<li>Amazon Simple Storage Service (Amazon S3) bucket, with the dragons data</li>
+<li>AWS Systems Manager Parameter Store parameters</li>
+<li>AWS Cloud9 integrated development environment (IDE)</li>
+</ul>
+<p><strong>The final exercise includes instructions to delete all the resources that you create in the exercises.</strong></p>
+<p>Familiarize yourself with <strong><a href="https://aws.amazon.com/s3/pricing/" target="_blank">Amazon S3 pricing</a></strong>, <strong><a href="https://aws.amazon.com/systems-manager/pricing/" target="_blank">AWS Systems Manager pricing</a></strong>, <strong><a href="https://aws.amazon.com/cloud9/pricing/" target="_blank">AWS Cloud9 pricing</a></strong>, and the <strong><a href="https://aws.amazon.com/free/" target="_blank">AWS Free Tier</a></strong>.</p>
+</div>
+<h1 id="exercise-1-setting-up-and-exploring-the-sdk">Exercise 1: Setting Up and Exploring the SDK</h1>
+<p>In this exercise, you install and configure the AWS Command Line Interface (AWS CLI) and the AWS SDK for Python (Boto3). After you install the necessary requirements, you create an S3 bucket and deploy a web application to the bucket. You then set up data in Amazon S3, and configure AWS Systems Manager parameters for the Dragons application. After you create all the resources, you explore the Python application.</p>
+<p>If you choose to use a local IDE instead of an AWS Cloud9 instance, you can follow the optional steps on <a href="exercise-1-localide.html">Local IDE Prerequisites</a>.</p>
+<p><em>You will want to run the steps in the US East (N. Virginia) us-east-1 Region.</em></p>
+<h2 id="task-1-creating-an-aws-cloud9-environment">Task 1: Creating an AWS Cloud9 environment</h2>
+<p>For this task, you will create an AWS Cloud9 environment, which you will use as your development environment throughout the exercises.</p>
+<ol type="1">
+<li><p>In the AWS Management Console, choose <strong>Services</strong>, and then search for and open <strong>Cloud9</strong>.</p></li>
+<li><p>Choose <strong>Create environment</strong>.</p></li>
+<li><p>For <strong>Name</strong>, enter <code>Python-DevEnv</code>.</p></li>
+<li><p>Leave the default settings, and choose <strong>Create</strong>. It might take a few minutes for the environment to be created.</p></li>
+<li><p>In the AWS Cloud9 (or local IDE terminal), install the SDK for Python:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">pip</span> install boto3</a></code></pre></div></li>
+</ol>
+<h2 id="task-2-creating-an-s3-bucket">Task 2: Creating an S3 bucket</h2>
+<p>In this task, you will create an S3 bucket. This bucket will store the web application frontend. AWS Command Line Interface (AWS CLI) commands are supplied for use in your AWS Cloud9 or local IDE terminal. To perform the same steps with the SDK, see the appendix.</p>
+<ol type="1">
+<li><p>In the AWS Cloud9 or the local IDE terminal, run the following commands. The first command prompts you to enter a unique bucket name. For example, you could combine your initials and <em>-dragons-app</em> to create a bucket name (such as <em>hjs-dragons-app</em>). This command also saves your bucket name as an environment variable. Then, the second command creates a bucket.</p>
+<p><em>Ensure that you run the steps in the US East (N. Virginia) us-east-1 Region.</em></p>
+<p>First, create a bucket name and save the bucket name as an environment variable:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="bu">echo</span> <span class="st">&quot;Please enter a bucket name: &quot;</span><span class="kw">;</span> <span class="bu">read</span> <span class="va">bucket</span>;  <span class="bu">export</span> <span class="va">MYBUCKET=$bucket</span></a></code></pre></div>
+<p>Then, create the bucket:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">aws</span> s3 mb s3://<span class="va">$MYBUCKET</span></a></code></pre></div>
+<p>If your bucket name isn’t unique, you will see an error message. Continue running the command and entering a new bucket name until you have successfully created a bucket.</p></li>
+<li><p>After the bucket is created, make the environment variable available in future exercises by adding an entry to your <code>.bashrc</code>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="bu">echo</span> <span class="st">&quot;export MYBUCKET=</span><span class="va">$MYBUCKET</span><span class="st">&quot;</span> <span class="op">&gt;&gt;</span> ~/.bashrc</a></code></pre></div></li>
+<li><p>List the buckets in your account and confirm that the newly created bucket is in the response.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">aws</span> s3 ls</a></code></pre></div>
+<p>For more information about the SDK syntax, see <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-example-creating-buckets.html" target="_blank">List existing buckets</a> in the <em>Boto3 Docs documentation</em>.</p>
+<p>For more information about AWS CLI commands, see the <a href="https://docs.aws.amazon.com/cli/latest/index.html" target="_blank">AWS CLI Command Reference</a>.</p></li>
+</ol>
+<h2 id="task-3-deploying-a-web-application-to-the-s3-bucket">Task 3: Deploying a web application to the S3 bucket</h2>
+<p>In this task, you will deploy a simple web application to the S3 bucket. Amazon S3 will become the web server for your static website, which includes HTML, images, and client-side scripts. AWS CLI instructions for copying the web application are supplied.</p>
+<ol type="1">
+<li><p>In the AWS Cloud9 or local IDE terminal, download and extract the web application.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">wget</span> https://aws-tc-largeobjects.s3.amazonaws.com/DEV-AWS-MO-BuildingRedux/downloads/dragon_stats_one.txt</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="fu">unzip</span> webapp1.zip -d ~/webapp1</a></code></pre></div></li>
+<li><p>Copy all the contents of the <code>webapp1</code> folder to Amazon S3.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">aws</span> s3api put-bucket-ownership-controls --bucket <span class="va">$MYBUCKET</span> --ownership-controls <span class="st">&#39;Rules=[{ObjectOwnership=BucketOwnerPreferred}]&#39;</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="ex">aws</span> s3api put-public-access-block --bucket <span class="va">$MYBUCKET</span> --public-access-block-configuration <span class="st">&quot;BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="ex">aws</span> s3 cp ~/webapp1 s3://<span class="va">$MYBUCKET</span>/dragonsapp/ --recursive --acl public-read</a></code></pre></div></li>
+<li><p>To find the URL for the web application, run the following AWS CLI command.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="bu">echo</span> <span class="st">&quot;URL: https://</span><span class="va">$MYBUCKET</span><span class="st">.s3.amazonaws.com/dragonsapp/index.html&quot;</span></a></code></pre></div></li>
+<li><p>Visit the web application (which is hosted on Amazon S3) by copying the URL output into a browser window.</p></li>
+<li><p>Confirm that your web application works. It will look similar to the following screen capture.</p>
+<figure>
+<img src="images/Exercise-1-web-application.png" alt="Dragons application user interface" /><figcaption>Dragons application user interface</figcaption>
+</figure></li>
+<li><p>In your browser, bookmark this application because you will return to it in future exercises.</p></li>
+</ol>
+<h2 id="task-4-setting-up-the-dragons-application">Task 4: Setting up the Dragons application</h2>
+<p>In this task, you will create resources that the Dragons application will use. You will download the file that contains the dragons data in JavaScript Object Notation (JSON) format, and upload this data to your S3 bucket. Then, you will create two parameters for Systems Manager. The console application that you create after this section uses the dragons data for querying, and it uses the parameters for configuration.</p>
+<ol type="1">
+<li><p>Download the source of the dragons data: <code>dragon_stats_one.txt</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="fu">wget</span> https://aws-tc-largeobjects.s3.amazonaws.com/DEV-AWS-MO-BuildingRedux/downloads/app.py</a></code></pre></div></li>
+<li><p>Copy the dragons data in <code>dragon_stats_one.txt</code> to the root of the S3 bucket.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="ex">aws</span> s3 cp dragon_stats_one.txt s3://<span class="va">$MYBUCKET</span></a></code></pre></div></li>
+<li><p>Confirm that the data populated the S3 bucket. You should see the <code>dragonsapp/</code> prefix and a <code>dragon_stats_one.txt</code> object, in addition to the other objects in the bucket.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1"><span class="ex">aws</span> s3 ls s3://<span class="va">$MYBUCKET</span></a></code></pre></div></li>
+<li><p>Set the Parameter Store value for <code>dragon_data_bucket_name</code>.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1"><span class="ex">aws</span> ssm put-parameter \</a>
+<a class="sourceLine" id="cb14-2" title="2">--name <span class="st">&quot;dragon_data_bucket_name&quot;</span> \</a>
+<a class="sourceLine" id="cb14-3" title="3">--type <span class="st">&quot;String&quot;</span> \</a>
+<a class="sourceLine" id="cb14-4" title="4">--overwrite \</a>
+<a class="sourceLine" id="cb14-5" title="5">--value <span class="va">$MYBUCKET</span></a></code></pre></div></li>
+<li><p>Set the Parameter Store value for the <code>dragon_data_file_name</code>.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="ex">aws</span> ssm put-parameter \</a>
+<a class="sourceLine" id="cb15-2" title="2">--name <span class="st">&quot;dragon_data_file_name&quot;</span> \</a>
+<a class="sourceLine" id="cb15-3" title="3">--type <span class="st">&quot;String&quot;</span> \</a>
+<a class="sourceLine" id="cb15-4" title="4">--overwrite \</a>
+<a class="sourceLine" id="cb15-5" title="5">--value dragon_stats_one.txt</a></code></pre></div></li>
+</ol>
+<h2 id="task-5-exploring-the-console-application">Task 5: Exploring the console application</h2>
+<p>In this task, you will explore the console application.</p>
+<ol type="1">
+<li><p>Download and extract the console application, which is a Python file.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1"><span class="fu">wget</span> https://aws-tc-largeobjects.s3.amazonaws.com/DEV-AWS-MO-BuildingRedux/downloads/webapp1.zip</a></code></pre></div></li>
+<li><p>Open the <code>app.py</code> file to see how it uses the Systems Manager parameters to retrieve the bucket name and file name.</p></li>
+<li><p>You can run the file to get some dragon data from <code>dragon_data_file_name</code>.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1"><span class="ex">python3</span> app.py</a></code></pre></div>
+<p>It should return some JSON output that’s similar to the following:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb18-1" title="1"><span class="fu">{</span><span class="dt">&quot;description_str&quot;</span><span class="fu">:</span><span class="st">&quot;From the northern fire tribe, Atlas was born from the ashes of his fallen father in combat. He is fearless and does not fear battle.&quot;</span><span class="fu">,</span><span class="dt">&quot;dragon_name_str&quot;</span><span class="fu">:</span><span class="st">&quot;Atlas&quot;</span><span class="fu">,</span><span class="dt">&quot;family_str&quot;</span><span class="fu">:</span><span class="st">&quot;red&quot;</span><span class="fu">,</span><span class="dt">&quot;location_city_str&quot;</span><span class="fu">:</span><span class="st">&quot;anchorage&quot;</span><span class="fu">,</span><span class="dt">&quot;location_country_str&quot;</span><span class="fu">:</span><span class="st">&quot;usa&quot;</span><span class="fu">,</span><span class="dt">&quot;location_neighborhood_str&quot;</span><span class="fu">:</span><span class="st">&quot;w fireweed ln&quot;</span><span class="fu">,</span><span class="dt">&quot;location_state_str&quot;</span><span class="fu">:</span><span class="st">&quot;alaska&quot;</span><span class="fu">}</span></a></code></pre></div></li>
+</ol>
+<h2 id="appendix-how-would-you-do-this-exercise-with-the-sdk-for-python">Appendix: How would you do this exercise with the SDK for Python?</h2>
+<p>In this exercise, you have followed these steps to create the infrastructure for a simple application:</p>
+<ul>
+<li>Create an S3 bucket for storage and hosting</li>
+<li>Deploy a web application to the S3 bucket</li>
+<li>Create Systems Manager parameters to store configurations</li>
+</ul>
+<p>The AWS CLI is suited to perform all these one-time tasks. As a quick experiment, consider: how would you do the same steps with the SDK?</p>
+<p>The following example script performs the same steps by using the SDK for Python.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb19-1" title="1"><span class="co">&quot;create dragons app script&quot;</span></a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="im">import</span> os</a>
+<a class="sourceLine" id="cb19-3" title="3"><span class="im">import</span> sys</a>
+<a class="sourceLine" id="cb19-4" title="4"><span class="im">import</span> mimetypes</a>
+<a class="sourceLine" id="cb19-5" title="5"><span class="im">from</span> os.path <span class="im">import</span> expanduser</a>
+<a class="sourceLine" id="cb19-6" title="6"><span class="im">import</span> boto3</a>
+<a class="sourceLine" id="cb19-7" title="7"></a>
+<a class="sourceLine" id="cb19-8" title="8">s3 <span class="op">=</span> boto3.client(<span class="st">&#39;s3&#39;</span>)</a>
+<a class="sourceLine" id="cb19-9" title="9">mybucket <span class="op">=</span> os.getenv(<span class="st">&#39;MYBUCKET&#39;</span>)</a>
+<a class="sourceLine" id="cb19-10" title="10"></a>
+<a class="sourceLine" id="cb19-11" title="11"><span class="kw">def</span> create_dragons_bucket():</a>
+<a class="sourceLine" id="cb19-12" title="12">  <span class="co">&quot;create a bucket&quot;</span></a>
+<a class="sourceLine" id="cb19-13" title="13">  s3.create_bucket(Bucket<span class="op">=</span>mybucket)</a>
+<a class="sourceLine" id="cb19-14" title="14">  <span class="bu">print</span>(<span class="ss">f&quot;Created </span><span class="sc">{</span>mybucket<span class="sc">}</span><span class="ss">&quot;</span>)</a>
+<a class="sourceLine" id="cb19-15" title="15"></a>
+<a class="sourceLine" id="cb19-16" title="16"><span class="kw">def</span> list_all_buckets():</a>
+<a class="sourceLine" id="cb19-17" title="17">  <span class="co">&quot;list buckets&quot;</span></a>
+<a class="sourceLine" id="cb19-18" title="18">  response <span class="op">=</span> s3.list_buckets()</a>
+<a class="sourceLine" id="cb19-19" title="19"></a>
+<a class="sourceLine" id="cb19-20" title="20">  <span class="bu">print</span>(<span class="st">&#39;Existing buckets:&#39;</span>)</a>
+<a class="sourceLine" id="cb19-21" title="21">  <span class="cf">for</span> bucket <span class="kw">in</span> response[<span class="st">&#39;Buckets&#39;</span>]:</a>
+<a class="sourceLine" id="cb19-22" title="22">    <span class="bu">print</span>(<span class="ss">f&#39;  </span><span class="sc">{</span>bucket[<span class="st">&quot;Name&quot;</span>]<span class="sc">}</span><span class="ss">&#39;</span>)</a>
+<a class="sourceLine" id="cb19-23" title="23"></a>
+<a class="sourceLine" id="cb19-24" title="24"><span class="kw">def</span> upload_dragons_app():</a>
+<a class="sourceLine" id="cb19-25" title="25">  <span class="co">&quot;upload files&quot;</span></a>
+<a class="sourceLine" id="cb19-26" title="26">  directory <span class="op">=</span> expanduser(<span class="st">&#39;~/webapp1/&#39;</span>)</a>
+<a class="sourceLine" id="cb19-27" title="27"></a>
+<a class="sourceLine" id="cb19-28" title="28">  <span class="bu">print</span>(<span class="st">&#39;Uploading...&#39;</span>)</a>
+<a class="sourceLine" id="cb19-29" title="29"></a>
+<a class="sourceLine" id="cb19-30" title="30">  <span class="cf">for</span> root, _, files <span class="kw">in</span> os.walk(directory):</a>
+<a class="sourceLine" id="cb19-31" title="31">    <span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> files:</a>
+<a class="sourceLine" id="cb19-32" title="32">      full_file <span class="op">=</span> os.path.join(root, <span class="bu">file</span>)</a>
+<a class="sourceLine" id="cb19-33" title="33">      rel_file <span class="op">=</span> os.path.relpath(full_file, directory)</a>
+<a class="sourceLine" id="cb19-34" title="34">      content_type <span class="op">=</span> mimetypes.guess_type(full_file)[<span class="dv">0</span>]</a>
+<a class="sourceLine" id="cb19-35" title="35">      <span class="bu">print</span>(full_file)</a>
+<a class="sourceLine" id="cb19-36" title="36">      s3.upload_file(full_file, mybucket, <span class="st">&#39;dragonsapp/&#39;</span> <span class="op">+</span> rel_file,</a>
+<a class="sourceLine" id="cb19-37" title="37">               ExtraArgs<span class="op">=</span>{<span class="st">&#39;ACL&#39;</span>: <span class="st">&#39;public-read&#39;</span>,<span class="st">&#39;ContentType&#39;</span>: content_type})</a>
+<a class="sourceLine" id="cb19-38" title="38"></a>
+<a class="sourceLine" id="cb19-39" title="39">  <span class="bu">print</span>(<span class="st">&#39;URL: https://</span><span class="sc">%s</span><span class="st">.s3.amazonaws.com/dragonsapp/index.html&#39;</span> <span class="op">%</span> (mybucket))</a>
+<a class="sourceLine" id="cb19-40" title="40"></a>
+<a class="sourceLine" id="cb19-41" title="41"><span class="kw">def</span> upload_dragons_data():</a>
+<a class="sourceLine" id="cb19-42" title="42">  <span class="co">&quot;upload data file&quot;</span></a>
+<a class="sourceLine" id="cb19-43" title="43">  cwd <span class="op">=</span> os.getcwd()</a>
+<a class="sourceLine" id="cb19-44" title="44"></a>
+<a class="sourceLine" id="cb19-45" title="45">  <span class="bu">print</span>(<span class="st">&#39;Uploading dragon_stats_one.txt&#39;</span>)</a>
+<a class="sourceLine" id="cb19-46" title="46"></a>
+<a class="sourceLine" id="cb19-47" title="47">  s3.upload_file(os.path.join(cwd, <span class="st">&#39;dragon_stats_one.txt&#39;</span>), mybucket, <span class="st">&#39;dragon_stats_one.txt&#39;</span>)</a>
+<a class="sourceLine" id="cb19-48" title="48"></a>
+<a class="sourceLine" id="cb19-49" title="49">  s3_resource <span class="op">=</span> boto3.resource(<span class="st">&#39;s3&#39;</span>)</a>
+<a class="sourceLine" id="cb19-50" title="50">  bucket <span class="op">=</span> s3_resource.Bucket(mybucket)</a>
+<a class="sourceLine" id="cb19-51" title="51">  <span class="co"># the objects are available as a collection on the bucket object</span></a>
+<a class="sourceLine" id="cb19-52" title="52">  <span class="cf">for</span> obj <span class="kw">in</span> bucket.objects.<span class="bu">all</span>():</a>
+<a class="sourceLine" id="cb19-53" title="53">    <span class="bu">print</span>(obj.key, obj.last_modified)</a>
+<a class="sourceLine" id="cb19-54" title="54"></a>
+<a class="sourceLine" id="cb19-55" title="55"><span class="kw">def</span> put_dragons_parameters():</a>
+<a class="sourceLine" id="cb19-56" title="56">  <span class="co">&quot;set the SSM parameters&quot;</span></a>
+<a class="sourceLine" id="cb19-57" title="57">  client <span class="op">=</span> boto3.client(<span class="st">&#39;ssm&#39;</span>)</a>
+<a class="sourceLine" id="cb19-58" title="58"></a>
+<a class="sourceLine" id="cb19-59" title="59">  <span class="bu">print</span>(<span class="st">&#39;Setting parameter store parameters&#39;</span>)</a>
+<a class="sourceLine" id="cb19-60" title="60"></a>
+<a class="sourceLine" id="cb19-61" title="61">  client.put_parameter(</a>
+<a class="sourceLine" id="cb19-62" title="62">    Name<span class="op">=</span><span class="st">&#39;dragon_data_bucket_name&#39;</span>,</a>
+<a class="sourceLine" id="cb19-63" title="63">    Value<span class="op">=</span>mybucket,</a>
+<a class="sourceLine" id="cb19-64" title="64">    Type<span class="op">=</span><span class="st">&#39;String&#39;</span>,</a>
+<a class="sourceLine" id="cb19-65" title="65">    Overwrite<span class="op">=</span><span class="va">True</span></a>
+<a class="sourceLine" id="cb19-66" title="66">  )</a>
+<a class="sourceLine" id="cb19-67" title="67"></a>
+<a class="sourceLine" id="cb19-68" title="68">  client.put_parameter(</a>
+<a class="sourceLine" id="cb19-69" title="69">    Name<span class="op">=</span><span class="st">&#39;dragon_data_file_name&#39;</span>,</a>
+<a class="sourceLine" id="cb19-70" title="70">    Value<span class="op">=</span><span class="st">&#39;dragon_stats_one.txt&#39;</span>,</a>
+<a class="sourceLine" id="cb19-71" title="71">    Type<span class="op">=</span><span class="st">&#39;String&#39;</span>,</a>
+<a class="sourceLine" id="cb19-72" title="72">    Overwrite<span class="op">=</span><span class="va">True</span></a>
+<a class="sourceLine" id="cb19-73" title="73">  )</a>
+<a class="sourceLine" id="cb19-74" title="74"></a>
+<a class="sourceLine" id="cb19-75" title="75"><span class="kw">def</span> print_menu():</a>
+<a class="sourceLine" id="cb19-76" title="76">  <span class="co">&quot;print options menu&quot;</span></a>
+<a class="sourceLine" id="cb19-77" title="77">  <span class="bu">print</span>(<span class="st">&quot;1. Create the dragons bucket&quot;</span>)</a>
+<a class="sourceLine" id="cb19-78" title="78">  <span class="bu">print</span>(<span class="st">&quot;2. List all buckets&quot;</span>)</a>
+<a class="sourceLine" id="cb19-79" title="79">  <span class="bu">print</span>(<span class="st">&quot;3. Upload dragons app&quot;</span>)</a>
+<a class="sourceLine" id="cb19-80" title="80">  <span class="bu">print</span>(<span class="st">&quot;4. Upload dragons data&quot;</span>)</a>
+<a class="sourceLine" id="cb19-81" title="81">  <span class="bu">print</span>(<span class="st">&quot;5. Set parameter store parameters&quot;</span>)</a>
+<a class="sourceLine" id="cb19-82" title="82">  <span class="bu">print</span>(<span class="st">&quot;6. Exit&quot;</span>)</a>
+<a class="sourceLine" id="cb19-83" title="83"></a>
+<a class="sourceLine" id="cb19-84" title="84"><span class="kw">def</span> main():</a>
+<a class="sourceLine" id="cb19-85" title="85">  <span class="co">&quot;script requires MYBUCKET environment variable&quot;</span></a>
+<a class="sourceLine" id="cb19-86" title="86">  <span class="cf">if</span> <span class="kw">not</span> mybucket:</a>
+<a class="sourceLine" id="cb19-87" title="87">    sys.exit(<span class="st">&quot;Please set MYBUCKET environment variable&quot;</span>)</a>
+<a class="sourceLine" id="cb19-88" title="88">  loop <span class="op">=</span> <span class="va">True</span></a>
+<a class="sourceLine" id="cb19-89" title="89"></a>
+<a class="sourceLine" id="cb19-90" title="90">  <span class="cf">while</span> loop:</a>
+<a class="sourceLine" id="cb19-91" title="91">    print_menu()    <span class="co">## Displays menu</span></a>
+<a class="sourceLine" id="cb19-92" title="92">    choice <span class="op">=</span> <span class="bu">input</span>(<span class="st">&quot;Enter your choice [1-5]: &quot;</span>)</a>
+<a class="sourceLine" id="cb19-93" title="93"></a>
+<a class="sourceLine" id="cb19-94" title="94">    <span class="cf">if</span> choice<span class="op">==</span><span class="st">&quot;1&quot;</span>:</a>
+<a class="sourceLine" id="cb19-95" title="95">      create_dragons_bucket()</a>
+<a class="sourceLine" id="cb19-96" title="96">    <span class="cf">elif</span> choice<span class="op">==</span><span class="st">&quot;2&quot;</span>:</a>
+<a class="sourceLine" id="cb19-97" title="97">      list_all_buckets()</a>
+<a class="sourceLine" id="cb19-98" title="98">    <span class="cf">elif</span> choice<span class="op">==</span><span class="st">&quot;3&quot;</span>:</a>
+<a class="sourceLine" id="cb19-99" title="99">      upload_dragons_app()</a>
+<a class="sourceLine" id="cb19-100" title="100">    <span class="cf">elif</span> choice<span class="op">==</span><span class="st">&quot;4&quot;</span>:</a>
+<a class="sourceLine" id="cb19-101" title="101">      upload_dragons_data()</a>
+<a class="sourceLine" id="cb19-102" title="102">    <span class="cf">elif</span> choice<span class="op">==</span><span class="st">&quot;5&quot;</span>:</a>
+<a class="sourceLine" id="cb19-103" title="103">      put_dragons_parameters()</a>
+<a class="sourceLine" id="cb19-104" title="104">    <span class="cf">elif</span> choice<span class="op">==</span><span class="st">&quot;6&quot;</span>:</a>
+<a class="sourceLine" id="cb19-105" title="105">      <span class="bu">print</span>(<span class="st">&quot;Exiting...&quot;</span>)</a>
+<a class="sourceLine" id="cb19-106" title="106">      loop<span class="op">=</span><span class="va">False</span></a>
+<a class="sourceLine" id="cb19-107" title="107">    <span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb19-108" title="108">      <span class="bu">input</span>(<span class="st">&quot;I don&#39;t know that option..&quot;</span>)</a>
+<a class="sourceLine" id="cb19-109" title="109"></a>
+<a class="sourceLine" id="cb19-110" title="110">main()</a></code></pre></div>
+<script>
+document.body.innerHTML = document.body.innerHTML.replace(/RELATIVE(.+)RELATIVE/g, function (match, capture) {
+  let tmp = document.createElement("DIV");
+  tmp.innerHTML = capture;
+  return new URL(tmp.textContent || tmp.innerText || "", document.baseURI).href;
+});
+</script>
+</body>
+<footer>
+    <p>© 2022 Amazon Web Services, Inc. or its affiliates. All rights reserved. This work may not be reproduced or redistributed, in whole or in part, without prior written permission from Amazon Web Services, Inc. Commercial copying, lending, or selling is prohibited. Corrections, feedback, or other questions? Contact us at <a href="https://support.aws.amazon.com/#/contacts/aws-training" target="_blank">https://support.aws.amazon.com/#/contacts/aws-training</a>. All trademarks are the property of their owners.</p>
+</footer>
+</html>
