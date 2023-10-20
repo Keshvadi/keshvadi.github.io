@@ -1,7 +1,11 @@
 # Sample Teaching Materials
 
-Hello! Below are some of the teaching materials I've prepared for courses: Security, Web App Development, Cloud Computing (not complete yet), and C++ and OS labs (as a TA). 
-
+Welcome! 
+Below are some of the teaching materials I've prepared, including:
+- **Security**: Explore topics in cybersecurity, including cryptography, authentication, and network security.
+- **Web App Development**: Dive into web application development concepts, covering HTML, CSS, JavaScript, and more.
+- **Cloud Computing** (Work in Progress): Soon, you'll find materials related to cloud computing and cloud service models.
+- **C++ and OS Labs (as a TA)**: These materials support students in their C++ programming and operating systems labs.
 
 # Security
 
@@ -23,6 +27,4 @@ Hello! Below are some of the teaching materials I've prepared for courses: Secur
 16. [ID](security/15_ID.pdf)
 17. [BitCoin](security/16_BitCoin.pdf)
 
-Feel free to click on the links to access the respective PDF files for each topic.
 
-If you have any questions or need further assistance, please don't hesitate to ask!
