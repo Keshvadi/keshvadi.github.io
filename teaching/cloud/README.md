@@ -2,8 +2,8 @@
 
 01. [Python](src/01_Python_Basics.pdf)
 01. [Python Lab](src/01_Python_Lab.ipynb)
-02. [AWS CLI and API](src/02_Cryptography.pdf)
-03. [API Gateway](src/03_Hash_Function.pdf)
+02. [AWS CLI and API](src/02_AWS_CLI_API)
+03. [API Gateway](src/03_API_Gateway.pdf)
 04. [Authentication](src/04_Authentication.pdf)
 
 ## Note
