@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>CPSC 457 - Operating Systems </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Style the header */
+    header {
+      background-color: #666;
+      padding: 10px;
+      text-align: center;
+      font-size: 25px;
+      color: white;
+    }
+
+    /* Create two columns/boxes that floats next to each other */
+    nav {
+      float: left;
+      width: 10%;
+      height: 3500px;
+      /* only for demonstration, should be removed */
+      background: #BCBCBC;
+      padding: 10px;
+    }
+
+    /* Style the list inside the menu */
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    article {
+      float: left;
+      padding: 30px;
+      width: 90%;
+      background-color: #f1f1f1;
+      height: 100%;
+      /* only for demonstration, should be removed */
+    }
+
+    /* Clear floats after the columns */
+    section:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Style the footer */
+    footer {
+      background-color: #777;
+      padding: 5px;
+      text-align: center;
+      color: white;
+    }
+
+    p {
+      line-height: 25px;
+    }
+
+    /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+    @media (max-width: 600px) {
+
+      nav,
+      article {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h2>CPSC 457- Operating Systems (Lab)</h2>
+    <h3>Sina Keshvadi </h3>
+  </header>
+
+  <section>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+      </ul>
+      <ul>
+        <li><a href="../os/links.html">Links</a></li>
+      </ul>
+      <!-- <ul>
+      <li><a href="https://sites.google.com/site/2019fallcpsc457/">Course Page</a></li>
+    </ul> -->
+    </nav>
+
+    <!-- old os -->
+    <article>
+      <div>
+        <h1>Week 9 and 10 - Race Condition</h1>
+        <p>In week 9 and 10, we will talk about Race Condition. <br>
+          <a href="./09_10_Race_Condition/note.pdf">Race Condition Notes</a>
+        </p>
+        <p>
+        <h2 id="programming-exercises">Programming Exercises</h2>
+        <ol>
+          <li> <a href="./09_10_Race_Condition/simple_mutex.cpp">simple_mutex.cpp</a>: An
+            example of thread-level parallelism in selling tickets.</li>
+          <li> <a href="./09_10_Race_Condition/dining_philosophers.cpp">dining_philosophers.cpp</a>: This program
+            implements
+            the classic dining philosophers simulation. This version
+            works the vast majority of the time, but there&#39;s a non-zero chance the simulation deadlocks.</li>
+          <li><a
+              href="./09_10_Race_Condition/dining_philosopher_busy_waiting.cpp ">dining_philosopher_busy_waiting.cpp
+            </a>: This program implements
+            the classic dining philosophers simulation.
+            This version removes the deadlock concern present in dining_philosophers.cpp, but it allows busy waiting.
+          </li>
+          <li> <a href="./09_10_Race_Condition/dining_philosopher_cv.cpp">dining_philosopher_cv.cpp</a>: This program
+            uses
+            condition variables to implement the classic dining
+            philosophers simulation. This is the first version that actually does the right thing.</li>
+          <li><a href="./09_10_Race_Condition/dining_philosophers.cpp">dining_philosophers.cpp</a>: This program
+            implements
+            the classic dining philosophers simulation using the
+            sempahore class.</li>
+          <li> <a href="./09_10_Race_Condition/writer_reader.cpp">writer_reader.cpp</a>:
+            Implements the classic reader-writer thread example, where one thread writes to a
+            shared buffer and a second thread reads from it. This version uses no thread coordination and is BUGGY!</li>
+          <li><a href="./09_10_Race_Condition/writer_reader_fixed.cpp">writer_reader_fixed.cpp </a>: Implements the
+            classic
+            reader-writer thread example, where one thread writes to
+            a shared buffer and a second thread reads from it. This version uses thread coordination to ensure that the
+            reader only reads valid data and the writer doesn&#39;t overwrite unread data.</li>
+        </ol>
+
+        </p>
+        <hr>
+      </div>
+
+      <div>
+        <h1>Week 8 - Multi-Threadings</h1>
+        <p>In week 8, we will talk about Multi-Threadings. <br>
+          <a href="./08_Multithreading/note.pdf">Multi-Threadings Notes</a>
+        </p>
+        <p>
+        <h2 id="programming-exercises">Programming Exercises</h2>
+        <ol>
+          <li> <a href="./08_Multithreading/simple_thread.cpp">simple_thread.cpp</a>: This
+            program creat a simple thread</li>
+          <li><a href="./08_Multithreading/thread_array.cpp">thread_array.ccp</a>: This
+            program spawns threads to each greet you, and we wait for all threads to finish
+            before terminating.</li>
+        </ol>
+
+        </p>
+        <hr>
+      </div>
+
+      <div>
+        <h1>Week 6 and 7 - Signals</h1>
+        <p>In week 6 and 7, we will talk about Signals. <br>
+          <a href="./06_07_Signals/note.pdf">Signals Notes</a>
+        </p>
+        <p>
+        <h2 id="programming-exercises">Programming Exercises</h2>
+        <ol>
+          <li>
+            <p><a href="./06_07_Signals/sigint.cpp">sigint.cpp</a>: This
+              program installs a SIGINT handler to catch the SIGINT (Ctrl+c) instead of the default
+              behavior of terminating the program. (Use Ctrl+z instead to stop the program, and then
+              <code>kill -9 [PID]</code> to terminate it (you can use SIGKILL instead of 9)).
+            </p>
+          </li>
+          <li>
+            <p><a href="./06_07_Signals/sig_children.cpp">sig_children.cpp</a>: This
+              program illustrates how a SIGCHLD handler can be used to reap background child
+              processes (and have it work when all background processes take varying lengths of time to complete).</p>
+          </li>
+          <li>
+            <p><a href="./06_07_Signals/sigwait.cpp">sigwait.cpp</a>: This
+              program is the same as sigint.cpp but instead of using a signal handler to handle
+              SIGINT it waits for SIGTSTP signals using sigwait and then prints out a message to the user instead of the
+              default behavior of terminating the program. (Use Ctl-c instead to stop the program).</p>
+          </li>
+          <li>
+            <p><a href="./06_07_Signals/sig_children_2.cpp">sig_children_2.cpp</a>:
+              This program illustrates how we can wait for SIGCHLD signals using sigwait instead
+              of a signal handler to clean up background child processes.</p>
+          </li>
+        </ol>
+
+        </p>
+        <hr>
+      </div>
+
+      <div>
+        <h1>Week 5 - Interprocess Communication</h1>
+        <p>In week 5, we will talk about how processes communicate using pipe. <br>
+          <a href="./05_Interprocess_Communication/note.pdf">Interprocess Communication Notes</a>
+        </p>
+        <p>
+        <h2 id="programming-exercises">Programming Exercises</h2>
+        <ol>
+          <li><a href="./05_Interprocess_Communication/pipe.cpp">pipe.cpp</a>: This program
+            demonstrate a basic use of pipe.</li>
+          <li><a href="./05_Interprocess_Communication/pipe_fork.cpp">pipe_fork.cpp</a>: This
+            program shows how pipe works across child and parent processes.</li>
+          <li><a href="./05_Interprocess_Communication/subprocess.cpp">subprocess.cpp</a>:
+            Implements the subprocess routine, which is similar to popen and allows the parent
+            process to spawn a child process, print to its standard output, and then suspend until the child process has
+            finished.</li>
+          <li><a href="./05_Interprocess_Communication/pipeline.cpp">pipeline.cpp</a>: This
+            example presents the implementation of the pipeline routine, which is similar to
+            subprocess and allows the parent process to spawn two child processes, the first of which has its stdandard
+            output forwarded to the second child&#39;s standard input. The parent then waits for both children to
+            finish.</li>
+        </ol>
+
+        </p>
+        <hr>
+      </div>
+
+      <div>
+        <h1>Week 3 and 4 - Multi Processing</h1>
+        <p>In week 3 and 4, we will talk about Multi Processing. <br>
+          <a href="./03_04_Multi_Processing/note.pdf">Multi Processing Notes</a>
+        </p>
+        <p>
+        <h2 id="programming-exercises">Programming Exercises</h2>
+        <ol>
+          <li>
+            <p><a href="./03_04_Multi_Processing/fork.cpp">fork.cpp</a>: This program illustrates the basics of fork. It
+              has the clear flaw that the parent can finish before its child, and the child process isn&#39;t reaped by
+              the parent.</p>
+          </li>
+          <li>
+            <p><a href="./03_04_Multi_Processing/fork_file_sharing.cpp">fork_file_sharing.cpp</a>: This program creates
+              a child process where both the parent and child seemingly access or modify the same string at the same
+              address. But the string is different for both the parent and child.</p>
+          </li>
+          <li>
+            <p><a href="./03_04_Multi_Processing/fork_random.cpp">fork_random.cpp</a>: An example that shows how a
+              process and its child copy a random variable.</p>
+          </li>
+          <li>
+            <p><a href="./03_04_Multi_Processing/fork_output.cpp">fork_output.cpp</a>: Small example illustrating fork
+              and the potential for many possible outcomes that result from the concurrency and the various ways all of
+              the children, grandchildren, etc. can be scheduled.</p>
+          </li>
+          <li>
+            <p><a href="./03_04_Multi_Processing/waitpid.cpp">waitpid.cpp</a>: In this program a parent waits for its
+              child to terminate.</p>
+          </li>
+          <li>
+            <p><a href="./03_04_Multi_Processing/waitpid_status.cpp">waitpid_status.cpp</a>: Here&#39;s is a program
+              that&#39;s written in a style more conistent with how fork is normally used.</p>
+          </li>
+          <li>
+            <p><a href="./03_04_Multi_Processing/fork_exit_order.cpp">fork_exit_order.cpp</a>: This example spawns off 8
+              children, each of which returns a different exit status. The main program waits until all child processes
+              exit.</p>
+          </li>
+          <li>
+            <p><a href="./03_04_Multi_Processing/execvp.cpp">execvp.cpp</a>: Demonstrates the build-in execvp()
+              function.</p>
+          </li>
+          <li>
+            <p><a href="./03_04_Multi_Processing/simple-shell.cpp">simple-shell.cpp</a>: A program containing an
+              implementation of a working shell that can execute entered text commands. It relies on our own
+              implementation of system(), called mysystem(), that creates a process to execute a given shell command.
+            </p>
+          </li>
+          <li>
+            <p><a href="./03_04_Multi_Processing/system.cpp">system.cpp</a>: Demonstrates the build-in system()
+              function.</p>
+          </li>
+        </ol>
+
+        </p>
+        <hr>
+      </div>
+
+      <div>
+        <h1>Week 2 - System Calls and Assignment 1 Review</h1>
+        <p>In this week we cover System Calls and review assignment 1. <br>
+          <a href="./02_System_Calls/note.pdf">File System Notes</a>
+        <h2 id="programming-exercises">Programming Exercises</h2>
+        <ol>
+          <li>
+            <p><a href="./02_System_Calls/create_file.cpp">create_file.cpp</a>: This program shows an example of
+              creating a new file with a given name. Similar to the
+              <code>touch</code> unix command, it creates the file if it doesn&#39;t exist. But in this case, if it does
+              exist, it throws an error.
+            </p>
+          </li>
+          <li>
+            <p><a href="./02_System_Calls/copy.cpp">copy.cpp</a>: This program is the starter code for an example that
+              shows how we can make a copy of a
+              specified file into another specified file, similar to the <code>cp</code> unix command.</p>
+          </li>
+          <li>
+            <p><a href="./02_System_Calls/copy_extended.cpp">copy_extended.cpp</a>: This program is an implementation of
+              an extended copy command that shows how we can
+              make a copy of a specified file into multiple other specified files, as well as printing the contents to
+              the terminal.</p>
+          </li>
+        </ol>
+        </p>
+        <hr>
+      </div>
+
+      <div>
+        <h1>Week 1 - <a href="./01_File_System/"> File System</a></h1>
+        <p>In this week we review the Linux File System<br>
+          <a href="./01_File_System/note.pdf">File System Notes</a>
+        </p>
+      </div>
+    </article>
+  </section>
+
+  <footer>
+    Email: <a href="mailto:sina.keshvadi1@ucalgary.ca">sina.keshvadi1@ucalgary.ca</a><br>
+  </footer>
+
+</body>
+
+</html>

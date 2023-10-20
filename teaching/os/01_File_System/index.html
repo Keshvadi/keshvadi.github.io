@@ -1,0 +1,70 @@
+<h1 id="lab-1-filesystem-design">Lab 1 - Filesystem Design</h1>
+<h2 id="data-storage-and-access">Data Storage and Access</h2>
+<ul>
+<li>The stack, heap and other segments of program data live in memory (RAM)<ul>
+<li>fast</li>
+<li>byte-addressable: can quickly access any byte of data by address, but not individual bits by address</li>
+<li>not persistent - cannot store data between power-offs</li>
+</ul>
+</li>
+<li>The filesystem lives on disk (eg. hard drives)<ul>
+<li>slower</li>
+<li>persistent - stores data between power-offs</li>
+<li>sector-addressable: cannot read/write just one byte of data - can only read/write &quot;sectors&quot; of data</li>
+</ul>
+</li>
+</ul>
+<p>A hard disk is sector-addressable: cannot read/write just one byte of data - can only read/write &quot;sectors&quot; of data.  (we will work with a sector size of 512; but size is determined by the physical drive).</p>
+<h2 id="sectors-and-blocks">Sectors and Blocks</h2>
+<p>A filesystem generally defines its own unit of data, a &quot;block,&quot; that it reads/writes at a time.</p>
+<ul>
+<li>&quot;Sector&quot; = hard disk storage unit</li>
+<li>&quot;Block&quot; = filesystem storage unit (1 or more sectors) - software abstraction</li>
+</ul>
+<p>Let&#39;s imagine that the hard disk creators provide software to let us interface with the disk.
+Only two functions to work with a disk:</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">readSector</span><span class="hljs-params">(<span class="hljs-keyword">size_t</span> sectorNumber, <span class="hljs-keyword">void</span> *data)</span></span>;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">writeSector</span><span class="hljs-params">(<span class="hljs-keyword">size_t</span> sectorNumber, <span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *data)</span></span>;
+</code></pre>
+<h2 id="storing-data-on-disk">Storing Data on Disk</h2>
+<p>Two types of data we will be working with:</p>
+<ol>
+<li>file payload data - contents of files (e.g. text in documents, pixels in images)</li>
+<li>file metadata - information about files (e.g. name, size)</li>
+</ol>
+<h2 id="inodes">Inodes</h2>
+<p>Every file/directory has an inode containing information about it and what blocks store its data.</p>
+<p>The <strong>inode table</strong> at the start of the disk stores one <strong>inode</strong> per file.<br>An inode is a structure containing information about a file such as its size and which blocks elsewhere on disk store its contents.</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> inode {
+ <span class="hljs-keyword">uint16_t</span> i_mode; <span class="hljs-comment">// bit vector of file type and permissions</span>
+ <span class="hljs-keyword">uint8_t</span> i_nlink; <span class="hljs-comment">// number of references to file</span>
+ <span class="hljs-keyword">uint8_t</span> i_uid; <span class="hljs-comment">// owner</span>
+ <span class="hljs-keyword">uint8_t</span> i_gid; <span class="hljs-comment">// group of owner</span>
+ <span class="hljs-keyword">uint8_t</span> i_size0; <span class="hljs-comment">// most significant byte of size</span>
+ <span class="hljs-keyword">uint16_t</span> i_size1; <span class="hljs-comment">// lower two bytes of size (size is encoded in a three-byte number)</span>
+ <span class="hljs-keyword">uint16_t</span> i_addr[<span class="hljs-number">8</span>]; <span class="hljs-comment">// device addresses constituting file</span>
+ <span class="hljs-keyword">uint16_t</span> i_atime[<span class="hljs-number">2</span>]; <span class="hljs-comment">// access time</span>
+ <span class="hljs-keyword">uint16_t</span> i_mtime[<span class="hljs-number">2</span>]; <span class="hljs-comment">// modify time</span>
+};
+</code></pre>
+<p><strong>Note</strong>: inodes live on disk.  But we can read them into memory where we can represent them as structs.</p>
+<p>inode notes:</p>
+<ul>
+<li>If the file size is small, an inode stores up to 8 direct block numbers.</li>
+<li>If the file size is large, an inode stores 7 singly-indirect and 1 doubly-indirect block number.</li>
+<li>A directory is &quot;treated as a file&quot; - its payload data stores the name and inumber of each of its entries in 16 byte chunks.</li>
+<li>To find files, we can hop between directory inodes until we reach the inode for our file. We can start at inumber 1 for the root directory.</li>
+</ul>
+<h2 id="design-principles-modularity-layering">Design Principles: Modularity &amp; Layering</h2>
+<p><strong>Modularity</strong>: subdivision of a larger system into a collection of smaller subsystems, which themselves may be further subdivided into even smaller sub-subsystems.</p>
+<p><strong>Layering</strong>: the organization of several modules that interact in some hierarchical manner, where each layer typically only opens its interface to the module above it.</p>
+<p><strong>Note</strong>: These ideas aren&#39;t specific to filesystems!  Eg. networking systems also rely on layering.</p>
+<p>Unix builts layers on top of the low-level readSector and writeSector to implement a higher-level filesystem:</p>
+<ul>
+<li>sectors -&gt; blocks</li>
+<li>blocks -&gt; files</li>
+<li>files -&gt; inodes</li>
+<li>inodes -&gt; file names</li>
+<li>file names -&gt; path names</li>
+<li>path names -&gt; absolute path names</li>
+</ul>
