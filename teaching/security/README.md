@@ -1,9 +1,9 @@
-# Web Development Course
+# Security Course
 
 0. [Course Description](src/00_Course_Description.pdf)
 1. [Introduction](src/01_Introduction.pdf)
 2. [Cryptography](src/02_Cryptography.pdf)
-3. [Hash Function](src/03_Hash_Function.pdf)
+2. [Hash Function](src/03_Hash_Function.pdf)
 4. [Authentication](src/04_Authentication.pdf)
 5. [Kerberos](src/05_Kerberos.pdf)
 6. [Certificates](src/06_Certificates.pdf)
