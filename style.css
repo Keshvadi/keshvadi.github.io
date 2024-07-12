@@ -1,0 +1,120 @@
+/* General body styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+  /* Enable flexbox */
+  display: flex;
+  flex-direction: column; /* Arrange content vertically */
+  min-height: 100vh; /* Ensure the body takes up the full viewport height */
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 0.3rem 0;
+  text-align: center;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 0.3rem 0;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
+main {
+  /* padding: 2rem; */
+  /* max-width: 960px; */
+  /* margin: 0 auto; */
+  flex: 1;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+h2 {
+  color: #333;
+}
+
+/* Survey Section Styles */
+#survey a {
+  display: inline-block;
+  background-color: #007bff; /* Blue button */
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+/* About Section Styles */
+#about p {
+  margin-bottom: 0.5rem;
+}
+
+
+/* Link styles */
+a {
+  color: #007bff; /* Example link color */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Navigation bar styles */
+nav {
+  background-color: #333; /* Example background color */
+  padding: 10px;
+}
+
+/* Tab styles */
+nav a {
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block; /* Arrange tabs horizontally */
+}
+
+/* Active tab styles */
+nav a.active {
+  background-color: #555; /* Different background for active tab */
+}
+
+/* Hover effect */
+nav a:hover {
+  background-color: #444;
+}
+/* Profile photo */
+.profile-photo {
+    max-width: 200px; /* Adjust as needed */
+    border-radius: 50%; /* Make it circular */
+  }
+  
+  /* Contact list */
+  #about ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #about li {
+    margin-bottom: 10px;
+  }
+  
+  /* Icons (if using Font Awesome) */
+  #about i {
+    margin-right: 5px;
+  }
+  
+/* Other element styles (e.g., nav, lists, etc.) */
+/* Add your custom styles here */
