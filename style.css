@@ -1,120 +1,130 @@
-/* General body styles */
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-  color: #333;
-  /* Enable flexbox */
-  display: flex;
-  flex-direction: column; /* Arrange content vertically */
-  min-height: 100vh; /* Ensure the body takes up the full viewport height */
-}
+/* CSS - keshvadi.git.io */
 
-header {
-  background-color: #333;
-  color: #fff;
-  padding: 0.3rem 0;
+/* General */
+.text-center {
   text-align: center;
-}
-
-/* Footer Styles */
-footer {
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  padding: 0.3rem 0;
-}
-
-h1 {
-  margin-bottom: 0;
-}
-
-main {
-  /* padding: 2rem; */
-  /* max-width: 960px; */
-  /* margin: 0 auto; */
-  flex: 1;
 }
 
 section {
-  margin-bottom: 2rem;
+  padding-top: 20px; /* to add some space before the section */
 }
 
-h2 {
-  color: #333;
+/* Nav Menu */
+.main-menu {
+  background-color: #f0f0f0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* spans the full width */
+  z-index: 100; /* above other content */
+  padding: 10px 0;
 }
 
-/* Survey Section Styles */
-#survey a {
-  display: inline-block;
-  background-color: #007bff; /* Blue button */
-  color: #fff;
-  padding: 0.8rem 1.5rem;
-  text-decoration: none;
+.nav-list {
+  list-style: none; /* Remove default bullet points */
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-item {
+  margin: 0 10px; 
+}
+
+.nav-item a {
+  text-decoration: none; /* Remove underline from links */
+  color: #333; /* Set link color */
+  padding: 10px;
+  border-radius: 5px; 
+}
+
+.nav-item a:hover {
+  background-color: #ddd; /* Highlight on hover */
+}
+
+/* Profile CSS */
+
+.profile-container {
+  display: flex; 
+  align-items: center;
+}
+
+#profile-image {
+  margin-right: 20px; 
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  border: 2px solid black;
+  background-color: white;
+  padding: 5px;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 10px;
+  line-height: 25px;
+}
+
+/* about section */
+.about {
+  line-height: 25px;
+  padding: 30px;
+}
+
+/* Publication */
+#publications {
+  margin: 0 auto; /* Center the container */
+}
+
+.paper {
+  margin-bottom: 5px;
+  /* padding: 50px; */
+  padding-left: 20px;
+  padding-bottom: 10px;
+  border: 0px solid #ddd;
   border-radius: 5px;
 }
 
-/* About Section Styles */
-#about p {
-  margin-bottom: 0.5rem;
-}
-
-
-/* Link styles */
-a {
-  color: #007bff; /* Example link color */
+.paper a {
+  color: #0564c9; /* Link color (customize) */
   text-decoration: none;
 }
 
-a:hover {
+.paper a:hover {
   text-decoration: underline;
 }
 
-/* Navigation bar styles */
-nav {
-  background-color: #333; /* Example background color */
-  padding: 10px;
+.authors {
+  font-style: italic;
+  margin-top: 5px;
 }
 
-/* Tab styles */
-nav a {
-  color: #fff;
-  padding: 10px 20px;
+.venue {
+  font-size: 0.9em;
+  color: #666; /* Lighter text color for venue */
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", Times, sans-serif;
+  font-size: 17px;
+  padding: 20px;
+  /* margin-bottom: 1em;
+  margin-top: 2em; */
+}
+
+a {
   text-decoration: none;
-  display: inline-block; /* Arrange tabs horizontally */
+  color: #007bff;
 }
 
-/* Active tab styles */
-nav a.active {
-  background-color: #555; /* Different background for active tab */
+a:hover {
+  color: #1c566b;
+  text-decoration: underline;
 }
 
-/* Hover effect */
-nav a:hover {
-  background-color: #444;
+li {
+  margin-bottom: 5px;   /* Add space between list items */
 }
-/* Profile photo */
-.profile-photo {
-    max-width: 200px; /* Adjust as needed */
-    border-radius: 50%; /* Make it circular */
-  }
-  
-  /* Contact list */
-  #about ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  #about li {
-    margin-bottom: 10px;
-  }
-  
-  /* Icons (if using Font Awesome) */
-  #about i {
-    margin-right: 5px;
-  }
-  
-/* Other element styles (e.g., nav, lists, etc.) */
-/* Add your custom styles here */
+
