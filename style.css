@@ -107,11 +107,11 @@ p {
 
 body {
   margin: 0;
+  margin-left: 40px;
   font-family: "Roboto", Times, sans-serif;
   font-size: 17px;
   padding: 20px;
-  /* margin-bottom: 1em;
-  margin-top: 2em; */
+  max-width: 1200px;
 }
 
 a {
