@@ -1,14 +1,72 @@
+/* CSS - keshvadi.git.io */
+
+/* General */
+.text-center {
+  text-align: center;
+}
+
 #outer-container {
   max-width: 1200px;
 }
 
+/* Menu */
+.main-menu {
+	background-color: #f71010; /* Background color for the navigation bar */
+	padding: 10px 0; /* Add some padding */
+  }
+  
+  .nav-list {
+	list-style: none; /* Remove default bullet points */
+	padding: 0;
+	margin: 0;
+	display: flex; /* Use Flexbox for horizontal layout */
+	justify-content: space-around; /* Distribute items evenly */
+  }
+  
+  .nav-item {
+	margin: 0 10px; /* Add some spacing between items */
+  }
+  
+  .nav-item a {
+	text-decoration: none; /* Remove underline from links */
+	color: #333; /* Set link color */
+	padding: 10px;
+	border-radius: 5px; /* Add rounded corners */
+  }
+  
+  .nav-item a:hover {
+	background-color: #ddd; /* Highlight on hover */
+  }
+  
+
+/* Profile CSS */
+
+.profile-container {
+  display: flex; /* Enable Flexbox */
+  align-items: center; /* Vertically align items */
+}
+
 #profile-image {
+  margin-right: 20px; /* Add some space between image and text */
   width: 200px;
   height: 200px;
   border-radius: 100px;
   border: 2px solid black;
   background-color: white;
   padding: 5px;
+}
+#profile-name {
+  border-bottom: 1px solid #dedede;
+  font-weight: normal;
+}
+
+#profile-descr {
+  font-size: 20px;
+}
+
+#profile-info {
+  font-size: 15px;
+  /*font-style: italic;*/
 }
 
 .container p {
@@ -55,20 +113,6 @@ a {
 
 a:hover {
   color: #1c566b;
-}
-
-#profile-name {
-  border-bottom: 1px solid #dedede;
-  font-weight: normal;
-}
-
-#profile-descr {
-  font-size: 20px;
-}
-
-#profile-info {
-  font-size: 15px;
-  /*font-style: italic;*/
 }
 
 #header-text {
@@ -166,33 +210,3 @@ a:hover {
 .section-title h2 {
   font-weight: normal;
 }
-
-.main-menu {
-    background-color: #fff; /* White background */
-}
-
-.main-menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex; /* Arrange items horizontally */
-    justify-content: space-around; /* Evenly space items */
-}
-
-.main-menu li {
-    margin: 15px 0; /* Add some vertical spacing */
-}
-
-.main-menu a {
-    text-decoration: none;
-    color: #333; /* Dark gray text color */
-    font-weight: bold;
-    padding: 10px 20px; /* Add padding around links for a button effect */
-    border-radius: 5px; /* Slightly round the corners */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.main-menu a:hover {
-    background-color: #eee; /* Light gray background on hover */
-}
-
