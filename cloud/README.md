@@ -180,25 +180,25 @@ For this exercise, we'll be working with the dragon data stored in your applicat
 3. Now, we'll write a simple Python script to read the dragon data from the dragon file in the S3 bucket. Remember to replace us-east-1 with the correct region if you're using a different one. The code will use the Boto3 library to interact with S3 and retrieve the object content. Use `nano app.py` to start writing the code.
 
 ```python
-    import boto3
+import boto3
 
-    # Create S3 and SSM clients
-    s3 = boto3.client('s3', 'us-east-1')
-    ssm = boto3.client('ssm', 'us-east-1')
+# Create S3 and SSM clients
+s3 = boto3.client('s3', 'us-east-1')
+ssm = boto3.client('ssm', 'us-east-1')
 
-    # Retrieve bucket name and file name from Parameter Store
-    bucket_name = ssm.get_parameter(Name='dragon_data_bucket_name', WithDecryption=False)['Parameter']['Value']
-    file_name = ssm.get_parameter(Name='dragon_data_file_name', WithDecryption=False)['Parameter']['Value']
+# Retrieve bucket name and file name from Parameter Store
+bucket_name = ssm.get_parameter(Name='dragon_data_bucket_name', WithDecryption=False)['Parameter']['Value']
+file_name = ssm.get_parameter(Name='dragon_data_file_name', WithDecryption=False)['Parameter']['Value']
 
-    def listDragons():
-        # Retrieve the S3 object
-        response = s3.get_object(Bucket=bucket_name, Key=file_name)
-        # Read the object content as a string
-        content = response['Body'].read().decode('utf-8')
-        # Print the dragon data
-        print(content)
+def listDragons():
+    # Retrieve the S3 object
+    response = s3.get_object(Bucket=bucket_name, Key=file_name)
+    # Read the object content as a string
+    content = response['Body'].read().decode('utf-8')
+    # Print the dragon data
+    print(content)
 
-    listDragons()
+listDragons()
 ```
 
 4. You can run the file to get some dragon data from dragon_data_file_name.
