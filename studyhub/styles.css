@@ -1,0 +1,229 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #003e51; /* TRU Blue for primary text color */
+    background-color: #003e51; /* Darker TRU Blue as background */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header, section {
+    background-color: #ffffff; /* White background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    padding: 20px;
+}
+
+.title {
+    text-align: center;
+    background-color: #ffffff; /* White background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+.title h1 {
+    color: #00b0b9; /* TRU Teal for the main title */
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.title p {
+    color: #003e51; /* TRU Blue for subtitle text */
+    font-size: 1.1em;
+    margin: 5px 0;
+}
+
+h1, h2 {
+    color: #00b0b9; /* TRU Teal for headers */
+}
+
+a {
+    color: #00b0b9; /* TRU Teal for links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #ffffff;
+    background-color: #00b0b9; /* TRU Teal for buttons */
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #003e51; /* Darker blue on hover */
+}
+
+.quick-nav {
+    text-align: center; 
+    font-weight: bold; 
+    font-size: 1.1em; 
+}
+
+.quick-nav a {
+    text-decoration: none;
+    color: #f5c518;
+    margin: 0 2px; 
+    padding: 5px 10px; 
+    border-radius: 4px; 
+    font-weight: 600; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+.quick-nav a:hover {
+    background-color: #f5c518; 
+    color: #003e51; 
+    text-decoration: none; 
+}
+
+
+.schedule-list {
+    display: inline-block;
+    width: 45%;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.schedule-list li {
+    margin: 5px 0;
+}
+
+#contact form {
+    max-width: 600px;
+    width: 80%; 
+    margin: 0 auto; 
+    background-color: #f8f9fa;
+    padding: 20px; 
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+#contact label {
+    font-size: 1.1em;
+    color: #003e51; /* TRU Blue */
+    display: block; 
+    margin-bottom: 5px;
+}
+
+#contact input[type="email"],
+#contact textarea {
+    width: 90%; 
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px; 
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif; 
+}
+
+#contact button {
+    display: block;
+    margin: 0 auto 0;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    text-align: center;
+}
+
+.highlight {
+    background-color: #fffcdb; /* Light yellow for emphasis */
+    border-left: 4px solid #f5c518; /* Bold yellow stripe */
+    padding: 10px 15px;
+    margin: 15px 0;
+    font-size: 1em;
+    line-height: 1.5;
+}
+.highlight strong {
+    color: #003e51; /* TRU Blue for contrast */
+}
+
+
+/* Reminders Section */
+#reminders {
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+#reminders h2 {
+    color: #00b0b9; /* TRU Teal */
+    margin-bottom: 15px;
+}
+
+#reminders p {
+    margin-bottom: 15px;
+}
+
+#reminders form {
+    margin-top: 20px;
+    max-width: 600px;
+    width: 90%;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+#reminders label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#reminders input[type="date"],
+#reminders select {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    width: 95%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#reminders .radio-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+#reminders .radio-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+#reminders button {
+    display: block;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    text-align: center;
+    cursor: pointer;
+}
+
+#reminders .button:hover {
+    background-color: #003e51;
+}
+
+/* Email Reminder Signup */
+#reminders .options > div {
+    margin-top: 30px;
+}
