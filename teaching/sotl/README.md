@@ -1,4 +1,6 @@
-# Professional Development
+# SoTL Cohort
 
-1.  [Higher Education Teaching Certificate (Harvard)](Higher_Education_Teaching_Certificate_Harvard.pdf)
-2.  [Stanford Related Document](Stanford.pdf)
+1.  [Cohort Information](Cohort.pdf)
+2.  [Snapshot A](Snapshot_A.pdf)
+3.  [Snapshot B](Snapshot_B.pdf)
+4.  [Discussion Questions](Questions.pdf)

@@ -1,19 +1,4 @@
-# Security Course
+# Professional Development
 
-0. [Course Description](src/00_Course_Description.pdf)
-1. [Introduction](src/01_Introduction.pdf)
-2. [Cryptography](src/02_Cryptography.pdf)
-2. [Hash Function](src/03_Hash_Function.pdf)
-4. [Authentication](src/04_Authentication.pdf)
-5. [Kerberos](src/05_Kerberos.pdf)
-6. [Certificates](src/06_Certificates.pdf)
-7. [DoS Attack](src/07_DoS_Attack.pdf)
-8. [Firewalls](src/08_Firewalls.pdf)
-9. [Anonymity](src/09_Anonymity.pdf)
-10. [Web Security](src/10_Web_Security.pdf)
-11. [XSRF](src/11_XSRF.pdf)
-12. [XSS](src/12_XSS.pdf)
-13. [Code Injection](src/13_Code_Injection.pdf)
-14. [Clickjacking](src/14_Clickjacking.pdf)
-15. [ID](src/15_ID.pdf)
-16. [BitCoin](src/16_BitCoin.pdf)
+1.  [Higher Education Teaching Certificate (Harvard)](Higher_Education_Teaching_Certificate_Harvard.pdf)
+2.  [Stanford Related Document](Stanford.pdf)
