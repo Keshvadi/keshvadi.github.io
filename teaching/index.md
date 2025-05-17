@@ -10,8 +10,8 @@ Below are some of the teaching materials I've prepared for Circuits and Embedded
 - [**Professional Development Certificates**](professional_development)
 - [**Student Review**](ursi)
 - [**Web App Labs**](web_labs)
-<!-- - [** **]( )
+- [**Course Syllabus Revision**](outlines)
 - [** **]( )
 - [** **]( )
 - [** **]( )
-- [** **]( ) -->
+- [** **]( )
