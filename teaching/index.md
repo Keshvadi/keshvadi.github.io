@@ -10,4 +10,5 @@ Below are some of the teaching materials I've prepared for Circuits and Embedded
 - [**Professional Development Certificates**](professional_development)
 - [**Student Evaluation**](ursi)
 - [**Web App Labs**](web_labs)
+- [**Sample SoTL Project**](sotl)
 - [**Course Syllabus Revision**](outlines)
