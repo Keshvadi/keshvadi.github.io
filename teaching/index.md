@@ -12,3 +12,4 @@ Below are some of the teaching materials I've prepared for Circuits and Embedded
 - [**Student Evaluation**](ursi)
 - [**Current SoTL Project**](sotl)
 - [**Course Syllabus Revision**](outlines)
+- [**HighSchool Activity**](highschool)
