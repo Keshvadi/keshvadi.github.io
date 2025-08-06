@@ -5,4 +5,4 @@
 4.  [Security Code Injection Assignment (PDF)](Security_Code_Injection_Assignment.pdf)
 5.  [Security Midterm](security_midterm.pdf)
 6.  [Security Final](security_final.pdf)
-7.  [Web Final Project](web_final_project.pdf)
+7.  [Practical Cloud Computing - Design Project](cloud_final_project.pdf)
