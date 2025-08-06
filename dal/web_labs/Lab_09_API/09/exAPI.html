@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SENG 4640</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script type="text/babel">
+
+        function ArticleGrids() {
+            const [articles, setArticles] = React.useState([]);
+
+            React.useEffect(() => {
+                const url = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=Sports&'
+                    + 'api-key=X59Zw2iHivuCs05AO1yZwrEwrqRhFowZ'; // replace query and your_key
+
+                const fetchData = async () => {
+                    const response = await fetch(url);
+                    const data = await response.json();
+                    setArticles(parse(data));
+                };
+
+                fetchData();
+            }, []); 
+
+            const parse = (results) => {
+                if (!results || !results.response) return [];
+                const articles = results.response.docs;
+                return articles.filter(article => article.multimedia.find(isXL))
+                    .map(article => ({
+                        id: article._id,
+                        title: article.headline.main || 'Untitled',
+                        imageURL: article.multimedia.find(isXL).url || '#',
+                        webURL: article.web_url || '#'
+                    }));
+            };
+
+            const isXL = (image) => image.subtype === 'xlarge';
+
+            return articles && ( // Conditional rendering
+                <div className='articles'>
+                    {articles.map(article => (
+                        <Article article={article} key={article.id} />
+                    ))}
+                </div>
+            );
+        }
+
+        const Article = ({ article }) => {
+            var imgURL = 'https://static01.nyt.com/' + article.imageURL;
+            return (
+                <div className='article'>
+                    <a className='article-link' href={article.webURL}>
+                        <img className='article-image' title={article.title} src={imgURL} />
+                    </a>
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('container')).render(<ArticleGrids />);
+
+    </script>
+</body>
+<html>
