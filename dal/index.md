@@ -2,14 +2,14 @@
 
 Welcome! 
 Below are some of the teaching dossier content that I've prepared for an Instructor position, including:
-- [**Security Course**](security)
-- [**Web App Development Course**](web)
-- [**UofC OS Labs (as a TA)**](os)
 - [**Sample of Assignments, Final Projects, and Exams**](assessment)
-- [**Practical Cloud Computing Labs**](cloud_labs)
-- [**Web App Labs**](web_labs)
-- [**Professional Development Certificates**](professional_development)
+- [**Security Course - Lectures**](security)
+- [**Web App Course - Lectures**](web)
+- [**Web App Course - Labs**](web_labs)
+- [**Practical Cloud Computing Course - Labs**](cloud_labs)
+- [**UofC OS Labs (as a TA)**](os)
 - [**Student Evaluation**](ursi)
-<!-- - [**Current SoTL Project**](sotl) -->
 - [**Course Syllabus Revision**](outlines)
+- [**Professional Development Certificates**](professional_development)
+<!-- - [**Current SoTL Project**](sotl) -->
 - [**HighSchool Activity**](highschool)
