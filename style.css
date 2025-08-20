@@ -56,7 +56,7 @@ ul {
 }
 
 li {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 /* Nav Menu */
@@ -114,6 +114,7 @@ li {
   background-color: white;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   cursor: pointer;
+  flex-shrink: 0; /* Prevents image from shrinking */
 }
 
 .about-text .lead {
@@ -191,4 +192,46 @@ footer {
     margin-top: 40px;
     font-size: 0.9em;
     color: #666;
+}
+
+/* ========================================= */
+/* Responsive Design for Mobile              */
+/* ========================================= */
+@media screen and (max-width: 768px) {
+
+  /* Adjust main container padding for smaller screens */
+  .container {
+    padding-top: 20px; 
+  }
+
+  /* Make navigation items stack vertically */
+  .nav-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .nav-item {
+    margin: 5px 0;
+  }
+  
+  /* Make profile section stack vertically */
+  .profile-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #profile-image {
+    margin: 0 0 20px 0; /* Remove right margin, add bottom margin */
+  }
+
+  /* Make research team lists stack vertically */
+  .team-lists {
+    flex-direction: column;
+  }
+  
+  .team-member {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
 }
