@@ -1,137 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Sina Keshvadi</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script
+      src="https://kit.fontawesome.com/your-fontawesome-kit.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sina Keshvadi</title>
-  <link rel="stylesheet" href="./style.css">
-  <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script> 
-</head>
+  <body>
+    <nav class="main-menu">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="#about">About</a></li>
+        <li class="nav-item"><a href="#research">Research</a></li>
+        <li class="nav-item"><a href="#publications">Publications</a></li>
+        <li class="nav-item"><a href="#teaching">Teaching</a></li>
+      </ul>
+    </nav>
 
-<body>
-  <nav class="main-menu">
-    <ul class="nav-list">
-      <li class="nav-item"><a href="#about">About</a></li>
-      <li class="nav-item"><a href="#research">Research</a></li>
-      <li class="nav-item"><a href="#publications">Publications</a></li>
-      <li class="nav-item"><a href="#teaching">Teaching</a></li>
-    </ul>
-  </nav>
-
-  <div class="container">
-    <section id="about">
-      <div class="profile-container">
-        <img id="profile-image" onclick="shakeup()" src="res/img/profile_small.jpg" alt="Sina Keshvadi">
-        <div class="about-text">
-          <h1>Sina Keshvadi</h1>
-          <p class="lead">
-            Assistant Professor, Department of <a href="https://www.tru.ca/science/programs/master-of-engineering-science.html" target="_blank">Software Engineering</a><br>
-            <a href="https://www.tru.ca/" target="_blank">Thompson Rivers University</a>, Kamloops, BC, Canada
-          </p>
-          <p class="contact-info">
-            <a href="mailto:skeshvadi@tru.ca">skeshvadi@tru.ca</a> | OM 2736 | (250) 852-7233
-          </p>
-          <div class="social-links">
-            <a href="res/cv.pdf" target="_blank">CV</a> |
-            <a href="https://scholar.google.ca/citations?hl=en&user=7uTS6EAAAAAJ" target="_blank">Google Scholar</a> |
-            <a href="https://github.com/keshvadi" target="_blank">GitHub</a>
+    <div class="container">
+      <section id="about">
+        <div class="profile-container">
+          <img
+            id="profile-image"
+            onclick="shakeup()"
+            src="res/img/profile_small.jpg"
+            alt="Sina Keshvadi"
+          />
+          <div class="about-text">
+            <h1>Sina Keshvadi</h1>
+            <p class="lead">
+              Assistant Professor, Department of
+              <a
+                href="https://www.tru.ca/science/programs/master-of-engineering-science.html"
+                target="_blank"
+                >Software Engineering</a
+              ><br />
+              <a href="https://www.tru.ca/" target="_blank"
+                >Thompson Rivers University</a
+              >, Kamloops, BC, Canada
+            </p>
+            <p class="contact-info">
+              <a href="mailto:skeshvadi@tru.ca">skeshvadi@tru.ca</a> | OM 2736 |
+              (250) 852-7233
+            </p>
+            <div class="social-links">
+              <a href="res/cv.pdf" target="_blank">CV</a> |
+              <a
+                href="https://scholar.google.ca/citations?hl=en&user=7uTS6EAAAAAJ"
+                target="_blank"
+                >Google Scholar</a
+              >
+              |
+              <a href="https://github.com/keshvadi" target="_blank">GitHub</a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="about-details">
-        <h3>About Me</h3>
-        <p>
-          My research focuses on Computer Networks and Internet Measurement. In Internet Measurement, we collect, analyze, and share data to better understand how the internet works, how it's used, and how it evolves. At Thompson Rivers University, I teach courses on cloud computing, web application development, and Internet security.
-        </p>
-        <p>
-          I received my Ph.D. in Computer Science from the <a href="https://www.cpsc.ucalgary.ca" target="_blank">University of Calgary</a> (2017 - 2021). Previously, I was a teaching faculty member at the <a href="http://pnu.ac.ir" target="_blank">Payame Noor University</a>, Tehran, Iran (2012 - 2017).
-        </p>
-      </div>
-    </section>
-    <hr>
+        <div class="about-details">
+          <h3>About Me</h3>
+          <p>
+            My research focuses on Computer Networks and Internet Measurement.
+            In Internet Measurement, we collect, analyze, and share data to
+            better understand how the internet works, how it's used, and how it
+            evolves. At Thompson Rivers University, I teach courses on cloud
+            computing, web application development, and Internet security.
+          </p>
+          <p>
+            I received my Ph.D. in Computer Science from the
+            <a href="https://www.cpsc.ucalgary.ca" target="_blank"
+              >University of Calgary</a
+            >
+            (2017 - 2021). Previously, I was a teaching faculty member at the
+            <a href="http://pnu.ac.ir" target="_blank">Payame Noor University</a
+            >, Tehran, Iran (2012 - 2017).
+          </p>
+        </div>
+      </section>
+      <hr />
 
-    <section id="research">
+      <section id="research">
         <h2 class="text-center">Research</h2>
-        <p>Currently, I am investigating integrated path selection and congestion control mechanisms to enhance the performance and stability of Multipath QUIC within emerging path-aware network architectures like SCION. Additionally, I collaborate with colleagues in teaching and education on SoTL initiatives to contribute to the development of effective pedagogical approaches for engineering education.</p>
+        <p>
+          Currently, I am investigating integrated path selection and congestion
+          control mechanisms to enhance the performance and stability of
+          Multipath QUIC within emerging path-aware network architectures like
+          SCION. Additionally, I collaborate with colleagues in teaching and
+          education on SoTL initiatives to contribute to the development of
+          effective pedagogical approaches for engineering education.
+        </p>
 
         <h3>Research Team</h3>
         <div class="team-lists">
-            <div class="team-member">
-                <h4>Current</h4>
-                <ul>
-                    <li>Alissa Baumeister (2025)</li>
-                    <li>Damien Rossi (2025)</li>
-                    <li>Lars Herschbach (2025)</li>
-                </ul>
-            </div>
-            <div class="team-member">
-                <h4>Alumni</h4>
-                <ul>
-                    <li>Nithiya Shri Muruganandham (2024)</li>
-                    <li><a href="https://github.com/Varun-Mayilvaganan" target="_blank">Varun Mayilvaganan (2024)</a></li>
-                    <li><a href="https://trevordrayton03.github.io/" target="_blank">Trevor Drayton (2024)</a></li>
-                    <li><a href="https://ca.linkedin.com/in/megan-rouault" target="_blank">Megan Rouault (2023)</a></li>
-                    <li><a href="https://ca.linkedin.com/in/chris-coulthard" target="_blank">Chris Coulthard (2023)</a></li>
-                </ul>
-            </div>
+          <div class="team-member">
+            <h4>Current</h4>
+            <ul>
+              <li>Alissa Baumeister (2025)</li>
+              <li>Damien Rossi (2025)</li>
+              <li>Lars Herschbach (2025)</li>
+            </ul>
+          </div>
+          <div class="team-member">
+            <h4>Alumni</h4>
+            <ul>
+              <li>Nithiya Shri Muruganandham (2024)</li>
+              <li>
+                <a href="https://github.com/Varun-Mayilvaganan" target="_blank"
+                  >Varun Mayilvaganan (2024)</a
+                >
+              </li>
+              <li>
+                <a href="https://trevordrayton03.github.io/" target="_blank"
+                  >Trevor Drayton (2024)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://ca.linkedin.com/in/megan-rouault"
+                  target="_blank"
+                  >Megan Rouault (2023)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://ca.linkedin.com/in/chris-coulthard"
+                  target="_blank"
+                  >Chris Coulthard (2023)</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
-    </section>
-    <hr>
+      </section>
+      <hr />
 
-    <section id="publications">
-      <h2 class="text-center">Selected Publications</h2>
-      <div class="publication-list">
-        <ol>
+      <section id="publications">
+        <h2 class="text-center">Selected Publications</h2>
+        <div class="publication-list">
+          <ol>
+            <li>
+              <a
+                href="https://ieeexplore.ieee.org/abstract/document/10222235/"
+                target="_blank"
+                >OpenData: A Framework to Train and Deploy ML Solutions in
+                Wide-Area Networks</a
+              ><br />
+              <span class="authors">S Keshvadi, S Hu, G Li, Y Lian</span><br />
+              <span class="venue">IEEE Network, 2023</span>
+            </li>
+            <li>
+              <a
+                href="https://link.springer.com/chapter/10.1007/978-3-030-72582-2_9"
+                target="_blank"
+                >An Empirical Measurement Study of Free Live Streaming
+                Services</a
+              ><br />
+              <span class="authors">S Keshvadi, C Williamson</span><br />
+              <span class="venue"
+                >Passive and Active Measurement Conference (PAM), 2021</span
+              >
+            </li>
+            <li>
+              <a
+                href="https://ieeexplore.ieee.org/abstract/document/9239745/"
+                target="_blank"
+                >Traffic Characterization of Instant Messaging Apps: A
+                Campus-Level View</a
+              ><br />
+              <span class="authors"
+                >S Keshvadi, M Karamollahi, C Williamson</span
+              ><br />
+              <span class="venue"
+                >IEEE 45th Conference on Local Computer Networks (LCN),
+                2020</span
+              >
+            </li>
+          </ol>
+        </div>
+        <p class="text-center" style="margin-top: 20px">
+          For a complete list, please visit my
+          <a
+            href="https://scholar.google.ca/citations?hl=en&user=7uTS6EAAAAAJ"
+            target="_blank"
+            >Google Scholar</a
+          >
+          page.
+        </p>
+      </section>
+      <hr />
+
+      <section id="teaching">
+        <h2 class="text-center">Teaching</h2>
+        <p>
+          Here are some links to the class websites of the courses I have
+          taught. If you have any questions or suggestions, please feel free to
+          email me!
+        </p>
+        <ul id="class-list">
           <li>
-            <a href="https://ieeexplore.ieee.org/abstract/document/10222235/" target="_blank">OpenData: A Framework to Train and Deploy ML Solutions in Wide-Area Networks</a><br>
-            <span class="authors">S Keshvadi, S Hu, G Li, Y Lian</span><br>
-            <span class="venue">IEEE Network, 2023</span>
+            <a href="/teaching/security/" target="_blank">Network Security</a>
           </li>
           <li>
-            <a href="https://link.springer.com/chapter/10.1007/978-3-030-72582-2_9" target="_blank">An Empirical Measurement Study of Free Live Streaming Services</a><br>
-            <span class="authors">S Keshvadi, C Williamson</span><br>
-            <span class="venue">Passive and Active Measurement Conference (PAM), 2021</span>
+            <a href="/teaching/web/" target="_blank">Web App Development</a>
           </li>
           <li>
-            <a href="https://ieeexplore.ieee.org/abstract/document/9239745/" target="_blank">Traffic Characterization of Instant Messaging Apps: A Campus-Level View</a><br>
-            <span class="authors">S Keshvadi, M Karamollahi, C Williamson</span><br>
-            <span class="venue">IEEE 45th Conference on Local Computer Networks (LCN), 2020</span>
+            <a href="/teaching/os/" target="_blank"
+              >System Programming (Labs)</a
+            >
           </li>
-        </ol>
-      </div>
-      <p class="text-center" style="margin-top:20px;">For a complete list, please visit my <a href="https://scholar.google.ca/citations?hl=en&user=7uTS6EAAAAAJ" target="_blank">Google Scholar</a> page.</p>
-    </section>
-    <hr>
+          <li>
+            <a
+              href="https://pages.cpsc.ucalgary.ca/~sina.keshvadi1/cpsc441/"
+              target="_blank"
+              >Computer Networks</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://pages.cpsc.ucalgary.ca/~sina.keshvadi1/cpp/"
+              target="_blank"
+              >C++ Programming</a
+            >
+          </li>
+          <li>
+            <a href="https://themissingseng.github.io" target="_blank"
+              >The Missing SENG workshop</a
+            >
+          </li>
+        </ul>
+      </section>
+    </div>
 
-    <section id="teaching">
-      <h2 class="text-center">Teaching</h2>
-      <p>Here are some links to the class websites of the courses I have taught. If you have any questions or suggestions, please feel free to email me!</p>
-      <ul id="class-list">
-        <li><a href="/teaching/security/" target="_blank">Network Security</a></li>
-        <li><a href="/teaching/web/" target="_blank">Web App Development</a></li>
-        <li><a href="/teaching/os/" target="_blank">System Programming (Labs)</a></li>
-        <li><a href="https://pages.cpsc.ucalgary.ca/~sina.keshvadi1/cpsc441/" target="_blank">Computer Networks</a></li>
-        <li><a href="https://pages.cpsc.ucalgary.ca/~sina.keshvadi1/cpp/" target="_blank">C++ Programming</a></li>
-        <li><a href="https://themissingseng.github.io" target="_blank">The Missing SENG workshop</a></li>
-      </ul>
-    </section>
-  </div>
+    <footer>
+      Last updated:
+      <script>
+        document.write(document.lastModified);
+      </script>
+    </footer>
 
-  <footer>
-    Last updated: <script>document.write(document.lastModified);</script>
-  </footer>
+    <script>
+      let currentImageIndex = 0;
+      const num_images = 8; // Total number of images (0.jpg through 7.jpg)
 
-  <script>
-    let currentImageIndex = 0;
-    const num_images = 8; // Total number of images (0.jpg through 7.jpg)
-
-    function shakeup() {
-      currentImageIndex = (currentImageIndex + 1) % num_images;
-      var img = document.getElementById("profile-image");
-      img.src = "res/img/" + currentImageIndex + ".jpg";
-    }
-  </script>
-</body>
-
+      function shakeup() {
+        currentImageIndex = (currentImageIndex + 1) % num_images;
+        var img = document.getElementById("profile-image");
+        img.src = "res/img/" + currentImageIndex + ".jpg";
+      }
+    </script>
+  </body>
 </html>
