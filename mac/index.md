@@ -1,7 +1,7 @@
 # Sample Teaching Materials
 
 Welcome! 
-Below are some of the teaching dossier content that I've prepared for an Instructor position, including:
+Below are some of the teaching dossier content that I've prepared, including:
 - [**Sample of Assignments, Final Projects, and Exams**](assessment)
 - [**Security Course - Lectures**](security)
 - [**Web App Course - Lectures**](web)
